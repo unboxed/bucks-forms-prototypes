@@ -1,0 +1,272 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Buckinghamshire Council
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "/"
+    }
+  ]
+}) }}{% endblock %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Complain about our services
+      </h1>
+
+
+<div class="govuk-inset-text">
+  You will be asked to provide contact details. If you wish to remain anonymous, please consider using our <a href="#">comments form</a>.
+</div>
+
+{{ govukRadios({
+  idPrefix: "primary-secondary",
+  name: "primary-secondary",
+  items: [
+    {
+      value: "primary",
+      text: "I am the complainant"
+    },
+    {
+      value: "secondary",
+      text: "I represent someone else "
+    }
+  ]
+}) }}
+
+
+{{ govukTextarea({
+  name: "describe",
+  id: "describe",
+  label: {
+    text: "Describe your complaint"
+  },
+  hint: {
+    text: "Which service is this about? What happened and when?"
+  }
+}) }}
+
+{{ govukTextarea({
+  name: "outcome",
+  id: "outcome",
+  label: {
+    text: "What would you like to happen as a result of your complaint?"
+  }
+}) }}
+
+
+<br />
+
+
+{% set contactedBeforeDetails %}
+{{ govukInput({
+  id: "contacted-before-details",
+  name: "contacted-before-details",
+  label: {
+    text: "Please provide any relevant reference numbers and details"
+  }
+}) }}
+{% endset -%}
+
+
+{{ govukRadios({
+  classes: "govuk-radios",
+  idPrefix: "contacted-before",
+  name: "contacted-before",
+  fieldset: {
+    legend: {
+      text: "Have you contacted us about this before?",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes",
+      conditional: {
+        html: contactedBeforeDetails
+      }
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+
+<br />
+
+{% call govukFieldset({
+  legend: {
+    text: "Your contact details",
+    classes: "govuk-fieldset__legend--m"
+  }
+}) %}
+
+  {{ govukInput({
+    label: {
+      html: 'Title (optional)'
+    },
+    classes: "govuk-!-width-one-quarter",
+    id: "title",
+    name: "title"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      html: 'First name'
+    },
+    classes: "govuk-!-width-one-half",
+    id: "first-name",
+    name: "first-name"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      html: 'Last name'
+    },
+    classes: "govuk-!-width-one-half",
+    id: "last-name",
+    name: "last-name"
+  }) }}
+
+{% endcall %}
+
+
+<br />
+
+{% set emailDetails %}
+{{ govukInput({
+  id: "email-details",
+  name: "email-details",
+  classes: "govuk-!-width-one-half",
+  label: {
+    text: "Email address"
+  }
+}) }}
+{% endset -%}
+
+{% set phoneDetails %}
+{{ govukInput({
+  id: "phone-details",
+  name: "phone-details",
+  classes: "govuk-!-width-one-half",
+  label: {
+    text: "Contact number"
+  }
+}) }}
+{% endset -%}
+
+{% set postDetails %}
+  {% call govukFieldset({
+  }) %}
+  
+    {{ govukInput({
+      label: {
+        html: 'Building and street address <span class="govuk-visually-hidden">line 1 of 2</span>'
+      },
+      id: "address-line-1",
+      name: "address-line-1"
+    }) }}
+  
+    {{ govukInput({
+      label: {
+        html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+      },
+      id: "address-line-2",
+      name: "address-line-2"
+    }) }}
+  
+    {{ govukInput({
+      label: {
+        text: "Town or city"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "address-town",
+      name: "address-town"
+    }) }}
+  
+    {{ govukInput({
+      label: {
+        text: "County"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "address-county",
+      name: "address-county"
+    }) }}
+  
+    {{ govukInput({
+      label: {
+        text: "Postcode"
+      },
+      classes: "govuk-input--width-10",
+      id: "address-postcode",
+      name: "address-postcode"
+    }) }}
+  
+  {% endcall %}
+{% endset -%}
+
+
+
+{{ govukRadios({
+  classes: "govuk-radios",
+  idPrefix: "how-contacted",
+  name: "how-contacted",
+  fieldset: {
+    legend: {
+      text: "How would you prefer to be contacted?",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "email",
+      text: "Email",
+      conditional: {
+        html: emailDetails
+      }
+    },
+    {
+      value: "phone",
+      text: "Phone",
+      conditional: {
+        html: phoneDetails
+      }
+    },
+    {
+      value: "post",
+      text: "Post",
+      conditional: {
+        html: postDetails
+      }
+    }
+  ]
+}) }}
+
+<p class="govuk-body-s">
+Please note that by completing this form you will be providing some personal information about yourself. If you would like to know more about how and why we collect this data, please see our corporate privacy notice.
+</p>  
+
+{{ govukButton({
+  text: "Confirm and send",
+  href: "complaints-confirmation.html"
+}) }}
+
+
+
+
+
+
+  </div>
+{% endblock %}

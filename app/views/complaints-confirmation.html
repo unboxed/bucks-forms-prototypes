@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Confirmation page example
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "/"
+    }
+  ]
+}) }}{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">Complaint submitted</h1>
+        <div class="govuk-panel__body">
+          Reference number<br><strong>CDR-0001112</strong>
+        </div>
+      </div>
+
+      <p>
+        We have sent you a confirmation email.
+      </p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+      <p>We’ve sent your complaint to the appropriate department.</p>
+      <p>They will respond within 10 working days or let you know if it cannot be dealt with under our complaints policy. </p>
+      <p>For more information, see how <a href="#">we deal with complaints</a>.</p>
+
+      <br /><br />
+
+<!--      <p><a href="#">What did you think of this service?</a> (takes 30 seconds)</p> -->
+
+
+    </div>
+  </div>
+  
+  
+
+{% endblock %}
