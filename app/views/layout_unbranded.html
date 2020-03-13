@@ -11,6 +11,9 @@
   {% for stylesheetUrl in extensionConfig.stylesheets %}
     <link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
   {% endfor %}
+
+  {% block hotjar %}
+  {% endblock %}
 {% endblock %}
 
 {% block header %}{% endblock %}
