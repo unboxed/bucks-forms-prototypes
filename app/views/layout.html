@@ -64,6 +64,9 @@
             })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
         </script>
     	{% endblock %}
+    	
+    	{% block cssOverrides %}
+    	{% endblock %}
   	{% endblock %}
     {# The default og:image is added below head so that scrapers see any custom metatags first, and this is just a fallback #}
     {# image url needs to be absolute e.g. http://wwww.domain.com/.../govuk-opengraph-image.png #}
