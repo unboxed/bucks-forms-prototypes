@@ -47,6 +47,7 @@
 {{ govukTextarea({
   name: "describe",
   id: "describe",
+  classes: "data-hj-whitelist",
   label: {
     text: "Describe your complaint"
   },
@@ -58,6 +59,7 @@
 {{ govukTextarea({
   name: "outcome",
   id: "outcome",
+  classes: "data-hj-whitelist",
   label: {
     text: "What would you like to happen as a result of your complaint?"
   }
@@ -71,6 +73,7 @@
 {{ govukInput({
   id: "contacted-before-details",
   name: "contacted-before-details",
+  classes: "data-hj-whitelist",
   label: {
     text: "Please provide any relevant reference numbers and details"
   }
@@ -117,7 +120,7 @@
     label: {
       html: 'Title (optional)'
     },
-    classes: "govuk-!-width-one-quarter",
+    classes: "govuk-!-width-one-quarter data-hj-whitelist",
     id: "title",
     name: "title"
   }) }}
@@ -191,7 +194,7 @@
       label: {
         text: "Town or city"
       },
-      classes: "govuk-!-width-two-thirds",
+      classes: "govuk-!-width-two-thirds data-hj-whitelist",
       id: "address-town",
       name: "address-town"
     }) }}
@@ -200,7 +203,7 @@
       label: {
         text: "County"
       },
-      classes: "govuk-!-width-two-thirds",
+      classes: "govuk-!-width-two-thirds data-hj-whitelist",
       id: "address-county",
       name: "address-county"
     }) }}
